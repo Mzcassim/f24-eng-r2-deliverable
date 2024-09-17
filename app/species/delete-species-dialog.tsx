@@ -52,14 +52,15 @@ export default function DeleteSpeciesDialog({ species }: { species: Species }) {
         <DialogHeader>
           <DialogTitle>Confirm Deletion</DialogTitle>
           <DialogDescription>
-            Are you sure you want to delete the species "{species.scientific_name}"? This action cannot be undone.
+            Are you sure you want to delete the species &quot;{species.scientific_name}&quot;? This action cannot be
+            undone.
           </DialogDescription>
         </DialogHeader>
         <div className="mt-4 flex justify-end space-x-4">
           <Button variant="secondary" onClick={() => setOpen(false)}>
             Cancel
           </Button>
-          <Button variant="destructive" onClick={handleDelete}>
+          <Button variant="destructive" onClick={() => void handleDelete()}>
             Delete
           </Button>
         </div>

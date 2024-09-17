@@ -86,7 +86,7 @@ export default function EditSpeciesDialog({ species }: { species: Species }) {
           <DialogDescription>Update the species information below and click Save.</DialogDescription>
         </DialogHeader>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)}>
+          <form onSubmit={() => void form.handleSubmit(onSubmit)()}>
             <FormField
               control={form.control}
               name="scientific_name"
@@ -107,11 +107,7 @@ export default function EditSpeciesDialog({ species }: { species: Species }) {
                 <FormItem>
                   <FormLabel>Common Name</FormLabel>
                   <FormControl>
-                    <Input
-                      {...field}
-                      value={field.value !== null ? field.value : ""}
-                      onChange={(e) => field.onChange(e.target.value)}
-                    />
+                    <Input {...field} value={field.value ?? ""} onChange={(e) => field.onChange(e.target.value)} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -154,11 +150,7 @@ export default function EditSpeciesDialog({ species }: { species: Species }) {
                 <FormItem>
                   <FormLabel>Description</FormLabel>
                   <FormControl>
-                    <Textarea
-                      {...field}
-                      value={field.value !== null ? field.value : ""}
-                      onChange={(e) => field.onChange(e.target.value)}
-                    />
+                    <Textarea {...field} value={field.value ?? ""} onChange={(e) => field.onChange(e.target.value)} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
